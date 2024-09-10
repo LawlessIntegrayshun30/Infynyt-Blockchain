@@ -1,0 +1,16 @@
+
+sequenceDiagram
+    participant M as Main
+    participant NC as NanoCode
+    participant BI as BlockchainInterface
+    participant RMV as ReadMeViewer
+    participant AS as APIServer
+    M->>NC: create_compatible_blockchain()
+    NC-->>BI: return BlockchainInterface
+    M->>NC: integrate_with_blockchain(BI)
+    M->>RMV: display_readme()
+    M->>AS: start_server()
+    Note over M, AS: Server runs to handle API requests
+    AS->>NC: integrate_with_blockchain(BI)
+    NC-->>AS: return success/failure
+    M->>AS: stop_server()
